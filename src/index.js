@@ -9,7 +9,7 @@ import {
   getTasks,
   loadTasks,
   getTasksLoadingStatus,
-  taskCreate
+  createTask
 } from './store/task'
 import {getErrors} from './store/errors'
 
@@ -33,8 +33,8 @@ const App = () => {
     dispatch(taskDeleted(taskId))
   }
 
-  const createTask = () => {
-    dispatch(taskCreate())
+  const addNewTask = () => {
+    dispatch(createTask({userId: 1, title: 'New Task', completed: false}))
   }
 
   if (isLoading) {
@@ -79,7 +79,7 @@ const App = () => {
       </ul>
       <button
         onClick={() => {
-          createTask()
+          addNewTask()
         }}
       >
         Add task
